@@ -1,11 +1,16 @@
 # inno-test
 
 Test repository for Inno Setup functionality. In particular, I would like to install
-a file in `Local System`'s `%LOCALAPPDATA%`.
+a file in `Local System`'s `%LOCALAPPDATA%`:
+
+```ini
+[Files]
+Source: "LICENSE"; DestDir: "{sys}\config\systemprofile\AppData\Local\InnoTest"; Flags: ignoreversion
+```
 
 The log suggests that this works fine:
 
-```
+```ini
 [14:20:10,722]   -- File entry --
 [14:20:10,725]   Dest filename: C:\Windows\system32\config\systemprofile\AppData\Local\InnoTest\LICENSE
 [14:20:10,729]   Time stamp of our file: 2022-10-24 13:56:42.000
@@ -18,7 +23,7 @@ It says "successfully installed the file", but neither the file nor the director
 
 Run the installer again, however, and you will be told that the destination file exists:
 
-```
+```ini
 [14:24:47,381]   -- File entry --
 [14:24:47,395]   Dest filename: C:\Windows\system32\config\systemprofile\AppData\Local\InnoTest\LICENSE
 [14:24:47,398]   Time stamp of our file: 2022-10-24 13:56:42.000
